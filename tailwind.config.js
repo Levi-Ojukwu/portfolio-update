@@ -4,7 +4,7 @@
  */
 
 export default {
-     content: ["./src/**/*.{html,js,ts,jsx,tsx}"],
+     content: ["./src/**/*.{html,js,ts,jsx,tsx}", ],
      darkMode: "class", // enables dark mode via class
      safelist: ['border-border'], // 👈 Force Tailwind to generate it
       theme: {
