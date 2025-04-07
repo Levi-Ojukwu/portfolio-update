@@ -1,31 +1,32 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import { ThemeProvider } from "./components/theme-provider"
 import Navbar from "./components/navbar"
-// import Footer from "./components/footer"
+import Footer from "./components/footer"
 // import HomePage from "./pages/home"
-// import AboutPage from "./pages/about"
+import AboutPage from "./pages/about"
 // import ServicesPage from "./pages/services"
 // import PortfolioPage from "./pages/portfolio"
-// import ContactPage from "./pages/contact"
+import ContactPage from "./pages/contact"
 import './App.css'
 import "./index.css"
+import "./output.css"
 
 function App() {
   return (
-    // <ThemeProvider defaultTheme="dark" storageKey="portfolio-theme">
+    <ThemeProvider defaultTheme="dark" storageKey="portfolio-theme">
       <Router>
         <div className="flex flex-col min-h-screen">
           <Navbar />
           <main className="flex-grow">
             <Routes>
               {/* <Route path="/" element={<HomePage />} /> */}
-              {/* <Route path="/about" element={<AboutPage />} /> */}
+              <Route path="/about" element={<AboutPage />} />
               {/* <Route path="/services" element={<ServicesPage />} /> */}
               {/* <Route path="/portfolio" element={<PortfolioPage />} /> */}
-              {/* <Route path="/contact" element={<ContactPage />} /> */}
+              <Route path="/contact" element={<ContactPage />} />
             </Routes>
           </main>
-          {/* <Footer /> */}
+          <Footer />
         </div>
       </Router>
     // </ThemeProvider>
