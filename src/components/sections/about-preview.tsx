@@ -4,7 +4,7 @@ import type React from "react"
 import { motion } from "framer-motion"
 import { Button } from "../ui/button"
 import { Link } from "react-router-dom"
-import { ProgressBar } from "../ui/progress-bar"
+import { ProgressBar } from "../ui/progress-bar" 
 import { ArrowRight } from "lucide-react"
 
 interface Skill {

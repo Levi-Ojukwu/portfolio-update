@@ -4,7 +4,7 @@ import MainLayout from "./components/layouts/main-layout"
 import HomePage from "./pages/home"
 import AboutPage from "./pages/about"
 import ServicesPage from "./pages/services"
-import PortfolioPage from "./pages/portfolio"
+import PortfolioPage from "./pages/portfolio" 
 import ContactPage from "./pages/contact"
 
 const App: React.FC = () => {
