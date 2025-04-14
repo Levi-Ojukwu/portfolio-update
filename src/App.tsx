@@ -1,29 +1,65 @@
-import type React from "react"
-import { Routes, Route } from "react-router-dom"
-import MainLayout from "./components/layouts/main-layout"
-import HomePage from "./pages/home"
-import AboutPage from "./pages/about"
-import ServicesPage from "./pages/services"
-import PortfolioPage from "./pages/portfolio" 
-import ContactPage from "./pages/contact"
+/** @format */
+
+import type React from "react";
+import { useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
+import MainLayout from "./components/layouts/main-layout";
+import HomePage from "./pages/home";
+import AboutPage from "./pages/about";
+import ServicesPage from "./pages/services";
+import PortfolioPage from "./pages/portfolio";
+import ContactPage from "./pages/contact";
+import { useColorTheme } from "./components/color-theme-provider";
+import "./index.css";
+import "./output.css";
 
 const App: React.FC = () => {
-  return (
-    <MainLayout>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/services" element={<ServicesPage />} />
-        <Route path="/portfolio" element={<PortfolioPage />} />
-        <Route path="/contact" element={<ContactPage />} />
-      </Routes>
-    </MainLayout>
-  )
-}
+	const { colorTheme } = useColorTheme();
 
-export default App
+	// Ensure theme is applied on initial load
+	useEffect(() => {
+		// Remove all theme classes
+		document.documentElement.classList.remove(
+			"theme-purple",
+			"theme-blue",
+			"theme-emerald",
+			"theme-amber",
+			"theme-rose",
+		);
 
+		// Add current theme class
+		document.documentElement.classList.add(`theme-${colorTheme}`);
+	}, [colorTheme]);
 
+	return (
+		<MainLayout>
+			<Routes>
+				<Route
+					path='/'
+					element={<HomePage />}
+				/>
+				<Route
+					path='/about'
+					element={<AboutPage />}
+				/>
+				<Route
+					path='/services'
+					element={<ServicesPage />}
+				/>
+				<Route
+					path='/portfolio'
+					element={<PortfolioPage />}
+				/>
+				<Route
+					path='/contact'
+					element={<ContactPage />}
+				/>
+			</Routes>
+		</MainLayout>
+	);
+};
+
+export default App;
 
 // import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 // import { ThemeProvider } from "./components/theme-provider"
@@ -61,9 +97,6 @@ export default App
 // }
 
 // export default App
-
-
-
 
 // // import { useState } from 'react'
 // // import reactLogo from './assets/react.svg'

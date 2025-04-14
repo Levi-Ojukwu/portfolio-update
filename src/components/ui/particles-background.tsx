@@ -74,6 +74,12 @@ const ParticlesBackground: React.FC = () => {
     const drawParticles = (): void => {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
 
+      // Update particle colors if theme changes
+      const currentColor = getThemeColor()
+      particles.forEach((particle) => {
+        particle.color = currentColor
+      })
+
       particles.forEach((particle, i) => {
         // Update position
         particle.x += particle.speedX

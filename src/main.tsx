@@ -1,13 +1,26 @@
-import React from "react"
-import ReactDOM from "react-dom/client"
-import App from "./App"
+/** @format */
 
-const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement)
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import { BrowserRouter } from "react-router-dom";
+import { ColorThemeProvider } from "./components/color-theme-provider";
+import { ThemeProvider } from "./components/theme-provider";
+
+const root = ReactDOM.createRoot(
+	document.getElementById("root") as HTMLElement,
+);
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-)
+	<React.StrictMode>
+		<ThemeProvider >
+			<ColorThemeProvider>
+				<BrowserRouter>
+					<App />
+				</BrowserRouter>
+			</ColorThemeProvider>
+		</ThemeProvider>
+	</React.StrictMode>,
+);
 
 // import { StrictMode } from 'react'
 // import { createRoot } from 'react-dom/client'

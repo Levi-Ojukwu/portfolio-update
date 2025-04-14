@@ -1,6 +1,6 @@
 import type React from "react"
-import ContactSection from "../components/sections/contact"
-import ParticlesBackground from "../components/ui/particles-background"
+import ContactSection from "../components/sections/contact";
+import ParticlesBackground from "../components/ui/particles-background";
 
 const ContactPage: React.FC = () => {
   return (

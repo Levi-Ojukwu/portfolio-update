@@ -27,6 +27,7 @@ const ThemeSwitcher: React.FC = () => {
         size="icon"
         className="rounded-full h-10 w-10 shadow-md border border-border/50 backdrop-blur-md bg-background/80"
         onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+        aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
       >
         {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
       </Button>

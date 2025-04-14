@@ -13,7 +13,7 @@ const HeroSection: React.FC = () => {
   const [isDeleting, setIsDeleting] = useState<boolean>(false)
   const [typingSpeed, setTypingSpeed] = useState<number>(150)
 
-  const phrases: string[] = ["Blockchain Developer", "Frontend Developer", "Technical Writer"]
+  const phrases: string[] = ["Blockchain Developer", "Frontend Developer", "Backend Developer", "Technical Writer"]
 
   useEffect(() => {
     const currentPhrase = phrases[currentPhraseIndex]
@@ -46,11 +46,11 @@ const HeroSection: React.FC = () => {
   }, [typedText, isDeleting, currentPhraseIndex, typingSpeed, phrases])
 
   return (
-    <section className="pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden">
+    <section className="pt-32 pb-20 md:pb-32 overflow-hidden">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-">
           <motion.div
-            className="space-y-6"
+            className="space-y-5 md:mt-5"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -66,12 +66,12 @@ const HeroSection: React.FC = () => {
             </motion.div>
 
             <motion.h1
-              className="text-4xl md:text-5xl lg:text-6xl font-bold font-heading leading-tight"
+              className="text-3xl md:text-4xl lg:text-5xl font-semibold font-heading leading-tight"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
             >
-              Building <span className="animated-gradient-text">digital experiences</span> for the decentralized future
+              Building <span className="animated-gradient-text font-bold">digital experiences</span> for the decentralized future
             </motion.h1>
 
             <motion.div
@@ -88,14 +88,12 @@ const HeroSection: React.FC = () => {
             </motion.div>
 
             <motion.p
-              className="text-muted-foreground text-lg leading-relaxed max-w-xl"
+              className="text-muted-foreground text-base leading-relaxed max-w-xl"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.5 }}
             >
-              I am a passionate Web3 Full-Stack Developer and technical writer with expertise in building scalable
-              decentralized applications that bridge innovation and usability. I specialize in crafting solutions that
-              help create innovative tools for both the Web2 and Web3 ecosystem.
+              I am a passionate Full-Stack and Blockchain Developer as well as Technical Writer. I specialize in building scalable and user-centric decentralized applications that seamlessly connect the Web2 and Web3 ecosystems.
             </motion.p>
 
             <motion.div
@@ -125,9 +123,9 @@ const HeroSection: React.FC = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.7 }}
           >
-            <div className="animated-gradient-border">
-              <div className="relative w-full aspect-[4/5] max-w-md mx-auto overflow-hidden rounded-xl">
-                <img src="/placeholder.svg" alt="Ojukwu Levi Chinedu" className="w-full h-full object-cover" />
+            <div className="animated-gradient-border h-[78%]">
+              <div className="relative w-full aspect-[4/5] max-w-md mx-auto overflow-hidden ">
+                <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bGFwdG9wJTIwY29kZXxlbnwwfHwwfHx8MA%3D%3D" alt="Ojukwu Levi Chinedu" className="w-full h- object-cover" />
               </div>
             </div>
 

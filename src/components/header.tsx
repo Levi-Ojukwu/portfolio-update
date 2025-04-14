@@ -44,16 +44,18 @@ const Header: React.FC = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-1">
+          <nav className="hidden md:flex items-center  space-x-10">
             {navLinks.map((link) => (
               <Link key={link.to} to={link.to} className={`nav-link ${location.pathname === link.to ? "active" : ""}`}>
                 {link.label}
               </Link>
             ))}
-            <Button asChild className="ml-4 bg-gradient hover:opacity-90 text-white">
+            
+          </nav>
+
+          <Button asChild className="ml-4 bg-gradient hover:opacity-90 text-white">
               <Link to="/contact">Hire Me</Link>
             </Button>
-          </nav>
 
           {/* Mobile Menu Button */}
           <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
