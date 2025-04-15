@@ -1,12 +1,15 @@
 "use client"
 
 import type React from "react"
-import { useState } from "react"
+import { useState, useRef } from "react"
 import { motion } from "framer-motion"
 import { Button } from "../ui/button"
 import { Input } from "../ui/input"
 import { Textarea } from "../ui/textarea"
-import { Phone, MapPin, Mail, Globe, Send } from "lucide-react"
+import { Phone, MapPin, Mail, Send } from "lucide-react"
+import { ToastContainer, toast } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
+import emailjs from '@emailjs/browser';
 
 interface ContactInfo {
   icon: React.ReactNode
@@ -30,6 +33,8 @@ const ContactSection: React.FC = () => {
   })
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
 
+  const formRef = useRef<HTMLFormElement>(null)
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
     setFormData((prev) => ({ ...prev, [name]: value }))
@@ -40,11 +45,34 @@ const ContactSection: React.FC = () => {
     setIsSubmitting(true)
 
     try {
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1500))
+      // EmailJS configuration
 
-      // Success message would go here (using a toast or alert)
-      alert("Message sent! Thank you for your message. I'll get back to you soon.")
+      // Replace these with your actual EmailJS service ID, template ID, and public key
+      const serviceId = "service_s2mouim" // Your EmailJS service ID
+      const templateId = "template_f4xywej" // Your EmailJS template ID
+      const publicKey = "DLfi8L-1Pg9OOQT0G" // Your EmailJS public key
+
+      // Prepare template parameters
+      const templateParams = {
+        to_email: "ojukwulevichinedu@gmail.com",
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+      }
+
+      // Send email using EmailJS
+      await emailjs.send(serviceId, templateId, templateParams, publicKey)
+
+      // Show success toast
+      toast.success("Message sent! Thank you for your message. I'll get back to you soon.", {
+        position: "bottom-left",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      })
 
       // Reset form
       setFormData({
@@ -54,8 +82,18 @@ const ContactSection: React.FC = () => {
         message: "",
       })
     } catch (error) {
-      // Error message would go here
-      alert("There was an error sending your message. Please try again.")
+      console.error("Error sending email:", error)
+
+      // Show error toast
+      toast.error("There was an error sending your message. Please try again.", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      })
+
     } finally {
       setIsSubmitting(false)
     }
@@ -77,15 +115,14 @@ const ContactSection: React.FC = () => {
       title: "Email",
       content: "levdevoj17@gmail.com",
     },
-    {
-      icon: <Globe className="h-6 w-6" />,
-      title: "Website",
-      content: "www.dormain.com",
-    },
   ]
 
   return (
     <section className="py-20 pt-32">
+
+       {/* React Toastify Container */}
+       <ToastContainer />
+
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -111,7 +148,7 @@ const ContactSection: React.FC = () => {
           <h3 className="text-2xl font-semibold text-gradient mb-2 font-heading">Have You Any Questions?</h3>
           <h4 className="text-lg mb-8">I'M AT YOUR SERVICE</h4>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {contactInfo.map((info, index) => (
               <motion.div
                 key={index}
@@ -143,7 +180,7 @@ const ContactSection: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.8 }}
         >
-          <form onSubmit={handleSubmit} className="max-w-3xl mx-auto">
+          <form ref={formRef} onSubmit={handleSubmit} className="max-w-3xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
               <div>
                 <Input

@@ -109,7 +109,7 @@ const HeroSection: React.FC = () => {
                 </Link>
               </Button>
               <Button asChild variant="outline" size="lg" className="group">
-                <a href="/MyCV.pdf" download className="flex items-center gap-2">
+                <a href="/Levi-Ojukwu.pdf" download="Levi-Ojukwu.pdf" className="flex items-center gap-2">
                   Download CV
                   <Download className="h-4 w-4 transition-transform group-hover:translate-y-1" />
                 </a>
@@ -123,7 +123,7 @@ const HeroSection: React.FC = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.7 }}
           >
-            <div className="animated-gradient-border h-[78%]">
+            <div className="animated-gradient-border h-[79%]">
               <div className="relative w-full aspect-[4/5] max-w-md mx-auto overflow-hidden ">
                 <img src="src/Images/HeroImg.png" alt="Ojukwu Levi Chinedu" className="animate-pulse" />
               </div>
