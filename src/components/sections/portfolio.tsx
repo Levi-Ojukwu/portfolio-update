@@ -21,57 +21,75 @@ const PortfolioSection: React.FC = () => {
   const projects: Project[] = [
     {
       title: "Token Stream dApp",
-      image: "/placeholder.svg",
-      description: "A decentralized application for streaming tokens between wallets.",
+      image: "src/Images/Triver.png",
+      description: "A decentralized application for  empowering individuals and businesses to automate financial processes seamlessly.",
       link: "https://triver.vercel.app/",
-      github: "https://github.com",
+      github: "https://github.com/TokenStream",
       technologies: ["React", "Solidity", "Ethers.js", "Tailwind CSS"],
       category: "blockchain",
     },
     {
       title: "Super Corp",
-      image: "/placeholder.svg",
-      description: "Corporate website with modern design and animations.",
+      image: "src/Images/supercope.png",
+      description: "Admin dashboard website with modern design and chart analytics.",
       link: "https://flourishing-ojukwu-levi-supercorp.netlify.app/",
-      github: "https://github.com",
-      technologies: ["React", "GSAP", "Styled Components"],
+      github: "https://github.com/Levi-Ojukwu/Super_corp",
+      technologies: ["Tailwind CSS", "React.js"],
       category: "frontend",
     },
     {
       title: "7 Seer",
-      image: "/placeholder.svg",
+      image: "src/Images/Revalysed.png",
       description: "Landing page for a prediction platform with interactive elements.",
       link: "https://ephemeral-ojukwulevi-7seer-landing-pa.netlify.app/",
-      github: "https://github.com",
-      technologies: ["Next.js", "Framer Motion", "TypeScript"],
-      category: "frontend",
-    },
-    {
-      title: "Omnifood",
-      image: "/placeholder.svg",
-      description: "Food delivery service website with subscription options.",
-      link: "https://omnifood-chinedu-levi.netlify.app/",
-      github: "https://github.com",
+      github: "https://github.com/Levi-Ojukwu/7Seer-clone",
       technologies: ["HTML", "CSS", "JavaScript"],
       category: "frontend",
     },
     {
-      title: "Prime Properties",
-      image: "/placeholder.svg",
-      description: "Real estate listing platform with property search functionality.",
-      link: "https://ojukwu-prime-properties.netlify.app/",
-      github: "https://github.com",
-      technologies: ["React", "Firebase", "Tailwind CSS"],
+      title: "Coin Mining Farm",
+      image: "src/Images/Coinmining.png",
+      description: "A pioneering platform dedicated to empowering individuals and organizations to capitalize on the transformative potential of cryptocurrency mining and investments.",
+      link: "https://omnifood-chinedu-levi.netlify.app/",
+      github: "https://github.com/Levi-Ojukwu/Coin-Mining-Stock",
+      technologies: ["React.js", "Typescript", "Laravel", "Tailwind CSS"],
       category: "fullstack",
     },
     {
-      title: "Blockchain Explorer",
-      image: "/placeholder.svg",
-      description: "A tool for exploring blockchain transactions and smart contracts.",
-      link: "#",
-      github: "https://github.com",
-      technologies: ["React", "Web3.js", "GraphQL", "Material UI"],
+      title: "Prime Properties",
+      image: "src/Images/Prime.png",
+      description: "Real estate listing platform with property search functionality.",
+      link: "https://ojukwu-prime-properties.netlify.app/",
+      github: "https://github.com/Levi-Ojukwu/New-Prime",
+      technologies: ["React", "Tailwind CSS"],
+      category: "frontend",
+    },
+    {
+      title: "Prosure",
+      image: "src/Images/Prosure.png",
+      description: "A decentralized insurance platform developed with user protection in mind to ensure that users are covered/compensated in the event of DeFi hacks.",
+      link: "https://prosure-frontend.vercel.app/",
+      github: "https://github.com/orgs/ALMON-CHAINCRAFTS/repositories",
+      technologies: ["React", "Web3.js", "Solidity", "Foundry", "Ethers.js"],
       category: "blockchain",
+    },
+    {
+      title: "Getting Started With StarkNet",
+      image: "src/Images/GettingStarted.png",
+      description: "This article will explain StarkNet's fundamentals, highlight its key features, and explain how to get started as a developer",
+      link: "https://medium.com/@ojukwulevichinedu/getting-started-with-starknet-unlocking-new-possibilities-d5590b0f9f9d",
+      github: "#",
+      technologies: ["Medium"],
+      category: "technical writing",
+    },
+    {
+      title: "StarkNet Smart Wallet",
+      image: "src/Images/SmartWallet.png",
+      description: "This article explains why you need to use smart wallets, and how to set up and make use of popular Starknet wallets like Braavos or Argent X",
+      link: "https://medium.com/@ojukwulevichinedu/starknet-smart-wallets-a-comprehensive-guide-to-starknet-smart-wallets-and-setup-7fcfdc2e6da3",
+      github: "#",
+      technologies: ["Medium"],
+      category: "technical writing",
     },
   ]
 
@@ -126,6 +144,7 @@ const PortfolioSection: React.FC = () => {
           >
             Frontend
           </button>
+
           <button
             onClick={() => setFilter("fullstack")}
             className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
@@ -133,6 +152,15 @@ const PortfolioSection: React.FC = () => {
             }`}
           >
             Full Stack
+          </button>
+
+          <button
+            onClick={() => setFilter("technical writing")}
+            className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+              filter === "technical writing" ? "bg-gradient text-white" : "bg-secondary hover:bg-secondary/80"
+            }`}
+          >
+            Article
           </button>
         </motion.div>
 

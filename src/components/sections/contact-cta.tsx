@@ -21,8 +21,7 @@ const ContactCTA: React.FC = () => {
           <div className="relative z-10 py-16 px-6 md:px-12 text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 font-heading">Let's Work Together</h2>
             <p className="text-white/80 max-w-2xl mx-auto mb-8 text-lg">
-              Have a project in mind? I'm available for freelance work and open to new opportunities. Let's create
-              something amazing together!
+              Have a project in mind? I am currently open to full-time employment and collaborative partnerships. I would welcome the chance to contribute to meaningful initiatives and create impactful solutions together.!
             </p>
             <Button asChild size="lg" className="bg-white text-[hsl(var(--theme-primary))] hover:bg-white/90 group">
               <Link to="/contact" className="flex items-center gap-2">

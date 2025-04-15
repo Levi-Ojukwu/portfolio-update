@@ -17,25 +17,25 @@ interface Project {
 const PortfolioPreview: React.FC = () => {
   const projects: Project[] = [
     {
-      title: "Token Stream dApp",
-      image: "/placeholder.svg",
+      title: "Triver Token Stream dApp",
+      image: "src/Images/Triver.png",
       description: "A decentralized application for streaming tokens between wallets.",
       link: "https://triver.vercel.app/",
       technologies: ["React", "Solidity", "Ethers.js"],
     },
     {
       title: "Super Corp",
-      image: "/placeholder.svg",
-      description: "Corporate website with modern design and animations.",
+      image: "src/Images/supercope.png",
+      description: "Admin dashboard website with modern design and chart analytics.",
       link: "https://flourishing-ojukwu-levi-supercorp.netlify.app/",
-      technologies: ["React", "GSAP", "Styled Components"],
+      technologies: ["Tailwind CSS", "React.js"],
     },
     {
       title: "7 Seer",
-      image: "/placeholder.svg",
+      image: "src/Images/Revalysed.png",
       description: "Landing page for a prediction platform with interactive elements.",
       link: "https://ephemeral-ojukwulevi-7seer-landing-pa.netlify.app/",
-      technologies: ["Next.js", "Framer Motion", "TypeScript"],
+      technologies: ["React.js", "Tailwind CSS", "TypeScript"],
     },
   ]
 

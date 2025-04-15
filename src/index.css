@@ -261,7 +261,7 @@
   }
 
   .dark .service-card {
-    border-color: rgba(55, 65, 81, 0.5); /* dark:border-gray-700/50 */
+    border-color: rgba(55, 65, 81, 0.5) !important; /* dark:border-gray-700/50 */
   }
 
   .service-card:hover {

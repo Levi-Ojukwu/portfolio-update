@@ -6,21 +6,16 @@ import type React from "react";
 import { createContext, useContext, useEffect, useState } from "react";
 
 type Theme = "dark" | "light" | "system";
-type ColorTheme = "theme-red" | "theme-green" | "theme-orange" | "theme-blue" | "theme-purple";
 
 interface ThemeProviderProps {
 	children: React.ReactNode;
 	defaultTheme?: Theme;
-  defaultColorTheme?: ColorTheme
 	storageKey?: string;
-  colorStorageKey?: string
 }
 
 interface ThemeProviderState {
 	theme: Theme;
 	setTheme: (theme: Theme) => void;
-  colorTheme: ColorTheme;
-  setColorTheme: (colorTheme: ColorTheme) => void;
 }
 
 const ThemeProviderContext = createContext<ThemeProviderState | undefined>(
@@ -30,9 +25,7 @@ const ThemeProviderContext = createContext<ThemeProviderState | undefined>(
 export function ThemeProvider({
 	children,
 	defaultTheme = "system",
-  defaultColorTheme = "theme-blue",
 	storageKey = "vite-ui-theme",
-  colorStorageKey = "vite-ui-color-theme",
 	...props
 }: ThemeProviderProps) {
 	const [theme, setTheme] = useState<Theme>(() => {
@@ -43,23 +36,6 @@ export function ThemeProvider({
     return defaultTheme
 	});
 
-  const [colorTheme, setColorTheme] = useState<ColorTheme>(() => {
-    if (typeof window !== "undefined") {
-      const storedColorTheme = localStorage.getItem(colorStorageKey)
-      const validThemes: ColorTheme[] = [
-        "theme-red",
-        "theme-green",
-        "theme-orange",
-        "theme-blue",
-        "theme-purple",
-      ]
-      
-      if (storedColorTheme && validThemes.includes(storedColorTheme as ColorTheme)) {
-        return storedColorTheme as ColorTheme
-      }
-    }
-    return defaultColorTheme
-  })
 
 	useEffect(() => {
 		const root = window.document.documentElement;
@@ -77,6 +53,10 @@ export function ThemeProvider({
 		}
 
 		root.classList.add(theme);
+
+		 // Debug log to verify theme changes
+		 console.log(`Light/dark theme changed to: ${theme}`);
+
 	}, [theme]);
 
 	const value: ThemeProviderState = {
@@ -85,12 +65,6 @@ export function ThemeProvider({
 			localStorage.setItem(storageKey, theme);
 			setTheme(theme);
 		},
-
-    colorTheme,
-  setColorTheme: (color: ColorTheme) => {
-    localStorage.setItem(colorStorageKey, color);
-    setColorTheme(color);
-  },
 	};
 
 	return (

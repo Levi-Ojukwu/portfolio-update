@@ -800,7 +800,7 @@ h1,
 }
 
 .dark .service-card {
-  border-color: rgba(55, 65, 81, 0.5);
+  border-color: rgba(55, 65, 81, 0.5) !important;
   /* dark:border-gray-700/50 */
 }
 
@@ -1088,8 +1088,8 @@ h1,
   inset: 0px;
 }
 
-.-bottom-6{
-  bottom: -1.5rem;
+.-left-28{
+  left: -7rem;
 }
 
 .-left-6{
@@ -1100,16 +1100,20 @@ h1,
   right: -1rem;
 }
 
-.-right-6{
-  right: -1.5rem;
-}
-
 .-top-6{
   top: -1.5rem;
 }
 
+.bottom-40{
+  bottom: 10rem;
+}
+
 .bottom-6{
   bottom: 1.5rem;
+}
+
+.bottom-72{
+  bottom: 18rem;
 }
 
 .left-0{
@@ -1120,8 +1124,16 @@ h1,
   left: 50%;
 }
 
+.left-40{
+  left: 10rem;
+}
+
 .right-0{
   right: 0px;
+}
+
+.right-10{
+  right: 2.5rem;
 }
 
 .right-6{
@@ -1130,6 +1142,10 @@ h1,
 
 .top-0{
   top: 0px;
+}
+
+.top-12{
+  top: 3rem;
 }
 
 .top-16{
@@ -1169,6 +1185,11 @@ h1,
 .my-1{
   margin-top: 0.25rem;
   margin-bottom: 0.25rem;
+}
+
+.my-16{
+  margin-top: 4rem;
+  margin-bottom: 4rem;
 }
 
 .mb-1{
@@ -1419,11 +1440,19 @@ h1,
   max-width: 36rem;
 }
 
+.max-w-xs{
+  max-width: 20rem;
+}
+
 .flex-1{
   flex: 1 1 0%;
 }
 
 .flex-grow{
+  flex-grow: 1;
+}
+
+.grow{
   flex-grow: 1;
 }
 
@@ -1486,6 +1515,16 @@ h1,
 
 .animate-blink{
   animation: blink 1s step-end infinite;
+}
+
+@keyframes pulse{
+  50%{
+    opacity: .5;
+  }
+}
+
+.animate-pulse{
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
 .cursor-default{
@@ -1908,10 +1947,6 @@ h1,
 
 .pb-2{
   padding-bottom: 0.5rem;
-}
-
-.pb-20{
-  padding-bottom: 5rem;
 }
 
 .pt-32{
@@ -2551,10 +2586,6 @@ h1,
   .md\:py-24{
     padding-top: 6rem;
     padding-bottom: 6rem;
-  }
-
-  .md\:pb-32{
-    padding-bottom: 8rem;
   }
 
   .md\:text-2xl{

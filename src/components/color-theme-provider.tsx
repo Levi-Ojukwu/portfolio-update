@@ -3,7 +3,12 @@
 import React, { createContext, useContext, useState, useEffect } from "react"
 
 // Define all available color themes
-export type ColorTheme = "purple" | "blue" | "emerald" | "amber" | "rose"
+export type ColorTheme =
+  | "theme-amber"
+  | "theme-rose"
+  | "theme-emerald"
+  | "theme-blue"
+  | "theme-purple";
 
 interface ColorThemeContextType {
   colorTheme: ColorTheme
@@ -18,7 +23,7 @@ interface ColorThemeProviderProps {
 
 export function ColorThemeProvider({ children }: ColorThemeProviderProps) {
   // Initialize with a default theme, but will check localStorage first
-  const [colorTheme, setColorTheme] = useState<ColorTheme>("purple")
+  const [colorTheme, setColorTheme] = useState<ColorTheme>("theme-purple")
   const [mounted, setMounted] = useState(false)
 
   // Only run on client-side to avoid hydration mismatch
@@ -49,6 +54,10 @@ export function ColorThemeProvider({ children }: ColorThemeProviderProps) {
 
     // Add current theme class
     document.documentElement.classList.add(`theme-${colorTheme}`)
+
+    // Debug log to verify theme changes
+    console.log(`Color theme changed to: theme-${colorTheme}`)
+
   }, [colorTheme, mounted])
 
   // Helper function to validate theme

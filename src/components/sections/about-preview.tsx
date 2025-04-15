@@ -14,9 +14,9 @@ interface Skill {
 
 const AboutPreview: React.FC = () => {
   const skills: Skill[] = [
-    { name: "Solidity", percentage: 80 },
-    { name: "Cairo", percentage: 87 },
-    { name: "React.js", percentage: 95 },
+    { name: "React.js", percentage: 88 },
+    { name: "Solidity", percentage: 75 },
+    { name: "Tailwind CSS", percentage: 97 },
   ]
 
   return (
@@ -43,12 +43,15 @@ const AboutPreview: React.FC = () => {
             viewport={{ once: true }}
           >
             <h3 className="text-2xl font-semibold mb-4 font-heading">
-              I am Levi Ojukwu, <span className="text-gradient">a Web Developer, and A Technical Writer</span>
+              I'm Levi Ojukwu, <span className="text-gradient">a Web Developer, and A Technical Writer</span>
             </h3>
             <p className="text-muted-foreground mb-6">
-              I create computer programs and solve technical problems using my creativity, analytical thinking and
-              problem-solving skills. My goal is solving real-world problems using blockchain technology while keeping
-              the user experience at the core.
+            I develop web and blockchain applications using Solidity, Cairo,
+							TypeScript, React.js, Laravel, and PHP. I enjoy creating smart
+							solutions that solve real-world problems while making sure they
+							are easy to use. As a technical writer, I also simplify complex
+							technical concepts into clear and accessible content to support
+							and grow developer communities
             </p>
 
             <div className="space-y-6 mb-8">
@@ -79,9 +82,9 @@ const AboutPreview: React.FC = () => {
             className="relative"
           >
             <div className="animated-gradient-border">
-              <div className="relative aspect-square max-w-md mx-auto overflow-hidden rounded-xl">
+              <div className="relative aspect-square max-w-xs mx-auto overflow-hidden my-16 rounded-xl">
                 <div className="absolute inset-0 bg-gradient opacity-10"></div>
-                <img src="/placeholder.svg" alt="About Me" className="w-full h-full object-cover" />
+                <img src="src/Images/Profile.jpg" alt="About Me" className="  object-cover" />
               </div>
             </div>
 
@@ -98,7 +101,7 @@ const AboutPreview: React.FC = () => {
               }}
             >
               <div className="text-center">
-                <span className="text-4xl font-bold text-gradient">5+</span>
+                <span className="text-4xl font-bold text-gradient">3+</span>
                 <p className="text-sm">Years Experience</p>
               </div>
             </motion.div>

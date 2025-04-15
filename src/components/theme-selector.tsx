@@ -4,22 +4,22 @@ import { Palette } from "lucide-react"
 import { useTheme } from "./theme-provider"
 import { Button } from "./ui/button"
 import { DropdownMenu, DropdownMenuContent,  DropdownMenuTrigger } from "./ui/dropdown-menu"
-import { ColorTheme } from "./color-theme-provider"
+import { useColorTheme } from "./color-theme-provider" // <-- Use the correct hook
 import { DropdownMenuItem } from "@radix-ui/react-dropdown-menu"
 
 export function ThemeSelector() {
-  const { colorTheme, setColorTheme } = useTheme()
+  const { colorTheme, setColorTheme } = useColorTheme()
 
   // Define theme colors
   const themes = [
-    { name: "Red", value: "theme-red", color: "#ec1839" },
-    { name: "Green", value: "theme-green", color: "#5c940d" },
-    { name: "Orange", value: "theme-orange", color: "#fd7e14" },
+    { name: "Amber", value: "theme-amber", color: "#ff7e00" },
+    { name: "Rose", value: "theme-rose", color: "#e5788f" },
+    { name: "Emerald", value: "theme-emerald", color: "#009473" },
     { name: "Blue", value: "theme-blue", color: "#1098ad" },
     { name: "Purple", value: "theme-purple", color: "#9c36b5" },
   ] as const;
 
-  type ThemeOption = typeof themes[number];
+  type ThemeOption = typeof themes[number]; 
 
   return (
     <DropdownMenu>

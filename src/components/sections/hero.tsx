@@ -46,7 +46,7 @@ const HeroSection: React.FC = () => {
   }, [typedText, isDeleting, currentPhraseIndex, typingSpeed, phrases])
 
   return (
-    <section className="pt-32 pb-20 md:pb-32 overflow-hidden">
+    <section className="pt-32 overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-">
           <motion.div
@@ -125,7 +125,7 @@ const HeroSection: React.FC = () => {
           >
             <div className="animated-gradient-border h-[78%]">
               <div className="relative w-full aspect-[4/5] max-w-md mx-auto overflow-hidden ">
-                <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bGFwdG9wJTIwY29kZXxlbnwwfHwwfHx8MA%3D%3D" alt="Ojukwu Levi Chinedu" className="w-full h- object-cover" />
+                <img src="src/Images/HeroImg.png" alt="Ojukwu Levi Chinedu" className="animate-pulse" />
               </div>
             </div>
 
@@ -148,8 +148,10 @@ const HeroSection: React.FC = () => {
               </div>
             </motion.div>
 
+           
+
             <motion.div
-              className="absolute -bottom-6 -right-6 p-4 rounded-lg glass-card"
+              className="absolute left-40 bottom-40  p-4 rounded-lg glass-card"
               animate={{
                 y: [0, 10, 0],
                 rotate: [0, -5, 0],
@@ -163,7 +165,45 @@ const HeroSection: React.FC = () => {
             >
               <div className="flex items-center gap-2">
                 <div className="h-3 w-3 rounded-full bg-[hsl(var(--theme-secondary))]"></div>
-                <span className="font-medium">Web3</span>
+                <span className="font-medium">Backend</span>
+              </div>
+            </motion.div>
+
+            <motion.div
+              className="absolute top-12 right-10 p-4 rounded-lg glass-card"
+              animate={{
+                y: [0, 10, 0],
+                rotate: [0, -5, 0],
+              }}
+              transition={{
+                repeat: Number.POSITIVE_INFINITY,
+                duration: 5,
+                ease: "easeInOut",
+                delay: 0.5,
+              }}
+            >
+              <div className="flex items-center gap-2">
+                <div className="h-3 w-3 rounded-full bg-[hsl(var(--theme-secondary))]"></div>
+                <span className="font-medium">Frontend</span>
+              </div>
+            </motion.div>
+
+            <motion.div
+              className="absolute bottom-72 -left-28 p-4 rounded-lg glass-card"
+              animate={{
+                y: [0, 10, 0],
+                rotate: [0, -5, 0],
+              }}
+              transition={{
+                repeat: Number.POSITIVE_INFINITY,
+                duration: 5,
+                ease: "easeInOut",
+                delay: 0.5,
+              }}
+            >
+              <div className="flex items-center gap-2">
+                <div className="h-3 w-3 rounded-full bg-[hsl(var(--theme-secondary))]"></div>
+                <span className="font-medium">Technical writer</span>
               </div>
             </motion.div>
           </motion.div>
