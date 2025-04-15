@@ -556,6 +556,53 @@ video {
   display: none;
 }
 
+/* Color Themes */
+
+.theme-purple {
+  --theme-primary: 265 89% 78%;
+  --theme-secondary: 267 83% 60%;
+  --theme-accent: 263 70% 50.4%;
+  --theme-muted: 250 95% 76%;
+  --gradient-start: 265 89% 78%;
+  --gradient-end: 267 83% 60%;
+}
+
+.theme-blue {
+  --theme-primary: 217 91% 60%;
+  --theme-secondary: 224 76% 48%;
+  --theme-accent: 213 94% 68%;
+  --theme-muted: 199 89% 48%;
+  --gradient-start: 217 91% 60%;
+  --gradient-end: 224 76% 48%;
+}
+
+.theme-emerald {
+  --theme-primary: 152 60% 52%;
+  --theme-secondary: 142 71% 45%;
+  --theme-accent: 160 84% 39%;
+  --theme-muted: 168 75% 60%;
+  --gradient-start: 152 60% 52%;
+  --gradient-end: 142 71% 45%;
+}
+
+.theme-amber {
+  --theme-primary: 43 96% 56%;
+  --theme-secondary: 32 95% 44%;
+  --theme-accent: 36 100% 50%;
+  --theme-muted: 48 96% 53%;
+  --gradient-start: 43 96% 56%;
+  --gradient-end: 32 95% 44%;
+}
+
+.theme-rose {
+  --theme-primary: 336 80% 58%;
+  --theme-secondary: 349 89% 60%;
+  --theme-accent: 339 90% 51%;
+  --theme-muted: 330 81% 60%;
+  --gradient-start: 336 80% 58%;
+  --gradient-end: 349 89% 60%;
+}
+
 :root {
   --background: 0 0% 100%;
   --foreground: 240 10% 3.9%;
@@ -611,53 +658,6 @@ video {
   --border: 240 3.7% 15.9%;
   --input: 240 3.7% 15.9%;
   --ring: 240 4.9% 83.9%;
-}
-
-/* Color Themes */
-
-.theme-purple {
-  --theme-primary: 265 89% 78%;
-  --theme-secondary: 267 83% 60%;
-  --theme-accent: 263 70% 50.4%;
-  --theme-muted: 250 95% 76%;
-  --gradient-start: 265 89% 78%;
-  --gradient-end: 267 83% 60%;
-}
-
-.theme-blue {
-  --theme-primary: 217 91% 60%;
-  --theme-secondary: 224 76% 48%;
-  --theme-accent: 213 94% 68%;
-  --theme-muted: 199 89% 48%;
-  --gradient-start: 217 91% 60%;
-  --gradient-end: 224 76% 48%;
-}
-
-.theme-emerald {
-  --theme-primary: 152 60% 52%;
-  --theme-secondary: 142 71% 45%;
-  --theme-accent: 160 84% 39%;
-  --theme-muted: 168 75% 60%;
-  --gradient-start: 152 60% 52%;
-  --gradient-end: 142 71% 45%;
-}
-
-.theme-amber {
-  --theme-primary: 43 96% 56%;
-  --theme-secondary: 32 95% 44%;
-  --theme-accent: 36 100% 50%;
-  --theme-muted: 48 96% 53%;
-  --gradient-start: 43 96% 56%;
-  --gradient-end: 32 95% 44%;
-}
-
-.theme-rose {
-  --theme-primary: 336 80% 58%;
-  --theme-secondary: 349 89% 60%;
-  --theme-accent: 339 90% 51%;
-  --theme-muted: 330 81% 60%;
-  --gradient-start: 336 80% 58%;
-  --gradient-end: 349 89% 60%;
 }
 
 * {
@@ -1252,6 +1252,10 @@ h1,
   margin-bottom: 0.5rem;
 }
 
+.mb-20{
+  margin-bottom: 5rem;
+}
+
 .mb-3{
   margin-bottom: 0.75rem;
 }
@@ -1641,6 +1645,10 @@ h1,
   justify-content: space-between;
 }
 
+.gap-0{
+  gap: 0px;
+}
+
 .gap-12{
   gap: 3rem;
 }
@@ -1663,10 +1671,6 @@ h1,
 
 .gap-8{
   gap: 2rem;
-}
-
-.gap-0{
-  gap: 0px;
 }
 
 .space-x-10 > :not([hidden]) ~ :not([hidden]){
@@ -1709,6 +1713,12 @@ h1,
   --tw-space-y-reverse: 0;
   margin-top: calc(2rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(2rem * var(--tw-space-y-reverse));
+}
+
+.space-x-2 > :not([hidden]) ~ :not([hidden]){
+  --tw-space-x-reverse: 0;
+  margin-right: calc(0.5rem * var(--tw-space-x-reverse));
+  margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
 .overflow-hidden{
@@ -1867,6 +1877,16 @@ h1,
 .bg-white{
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
+}
+
+.bg-blue-500{
+  --tw-bg-opacity: 1;
+  background-color: rgb(59 130 246 / var(--tw-bg-opacity, 1));
+}
+
+.bg-gray-200{
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity, 1));
 }
 
 .bg-gradient-to-r{
@@ -2120,6 +2140,11 @@ h1,
   color: hsl(var(--foreground) / 0.8);
 }
 
+.text-gray-500{
+  --tw-text-opacity: 1;
+  color: rgb(107 114 128 / var(--tw-text-opacity, 1));
+}
+
 .text-muted-foreground{
   color: hsl(var(--muted-foreground));
 }
@@ -2149,19 +2174,9 @@ h1,
   color: rgb(255 255 255 / 0.8);
 }
 
-.text-gray-600{
+.text-gray-700{
   --tw-text-opacity: 1;
-  color: rgb(75 85 99 / var(--tw-text-opacity, 1));
-}
-
-.text-gray-300{
-  --tw-text-opacity: 1;
-  color: rgb(209 213 219 / var(--tw-text-opacity, 1));
-}
-
-.text-gray-500{
-  --tw-text-opacity: 1;
-  color: rgb(107 114 128 / var(--tw-text-opacity, 1));
+  color: rgb(55 65 81 / var(--tw-text-opacity, 1));
 }
 
 .underline-offset-4{
@@ -2325,7 +2340,23 @@ h1,
   font-family: var(--font-heading);
 }
 
+.text-gradient,
+  .bg-gradient,
+  [class*="theme-"] * {
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Set default theme variables for immediate application before JS loads */
+
 :root {
+  /* Default theme-purple variables */
+  --theme-primary: 265 89% 78%;
+  --theme-secondary: 267 83% 60%;
+  --theme-accent: 263 70% 50.4%;
+  --theme-muted: 250 95% 76%;
+  --gradient-start: 265 89% 78%;
+  --gradient-end: 267 83% 60%;
+  /* Font variables */
   --font-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
     sans-serif;
   --font-heading: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
@@ -2362,6 +2393,8 @@ h1,
     background-position: 0% 50%;
   }
 }
+
+/* Make sure all elements that use theme colors have proper transitions */
 
 .file\:border-0::file-selector-button{
   border-width: 0px;
@@ -2459,6 +2492,11 @@ h1,
   background-color: rgb(255 255 255 / 0.9);
 }
 
+.hover\:bg-gray-300:hover{
+  --tw-bg-opacity: 1;
+  background-color: rgb(209 213 219 / var(--tw-bg-opacity, 1));
+}
+
 .hover\:text-\[hsl\(var\(--theme-primary\)\)\]:hover{
   color: hsl(var(--theme-primary));
 }
@@ -2474,11 +2512,6 @@ h1,
 .hover\:text-white:hover{
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
-}
-
-.hover\:text-gray-500:hover{
-  --tw-text-opacity: 1;
-  color: rgb(107 114 128 / var(--tw-text-opacity, 1));
 }
 
 .hover\:underline:hover{
@@ -2669,10 +2702,6 @@ h1,
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
-  .md\:gap-5{
-    gap: 1.25rem;
-  }
-
   .md\:gap-6{
     gap: 1.5rem;
   }
@@ -2739,5 +2768,4 @@ h1,
     font-size: 3.75rem;
     line-height: 1;
   }
-}
-
+}   

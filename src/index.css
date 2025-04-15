@@ -4,7 +4,68 @@
 @tailwind components;
 @tailwind utilities;
 
+
+@layer base {
+
+  /* Color Themes */
+  .theme-purple {
+    --theme-primary: 265 89% 78%;
+    --theme-secondary: 267 83% 60%;
+    --theme-accent: 263 70% 50.4%;
+    --theme-muted: 250 95% 76%;
+    --gradient-start: 265 89% 78%;
+    --gradient-end: 267 83% 60%;
+  }
+
+  .theme-blue {
+    --theme-primary: 217 91% 60%;
+    --theme-secondary: 224 76% 48%;
+    --theme-accent: 213 94% 68%;
+    --theme-muted: 199 89% 48%;
+    --gradient-start: 217 91% 60%;
+    --gradient-end: 224 76% 48%;
+  }
+
+  .theme-emerald {
+    --theme-primary: 152 60% 52%;
+    --theme-secondary: 142 71% 45%;
+    --theme-accent: 160 84% 39%;
+    --theme-muted: 168 75% 60%;
+    --gradient-start: 152 60% 52%;
+    --gradient-end: 142 71% 45%;
+  }
+
+  .theme-amber {
+    --theme-primary: 43 96% 56%;
+    --theme-secondary: 32 95% 44%;
+    --theme-accent: 36 100% 50%;
+    --theme-muted: 48 96% 53%;
+    --gradient-start: 43 96% 56%;
+    --gradient-end: 32 95% 44%;
+  }
+
+  .theme-rose {
+    --theme-primary: 336 80% 58%;
+    --theme-secondary: 349 89% 60%;
+    --theme-accent: 339 90% 51%;
+    --theme-muted: 330 81% 60%;
+    --gradient-start: 336 80% 58%;
+    --gradient-end: 349 89% 60%;
+  }  
+}
+
+
+/* Set default theme variables for immediate application before JS loads */
 :root {
+  /* Default theme-purple variables */
+  --theme-primary: 265 89% 78%;
+  --theme-secondary: 267 83% 60%;
+  --theme-accent: 263 70% 50.4%;
+  --theme-muted: 250 95% 76%;
+  --gradient-start: 265 89% 78%;
+  --gradient-end: 267 83% 60%;
+
+  /* Font variables */
   --font-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
     sans-serif;
   --font-heading: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
@@ -70,52 +131,6 @@
     --border: 240 3.7% 15.9%;
     --input: 240 3.7% 15.9%;
     --ring: 240 4.9% 83.9%;
-  }
-
-  /* Color Themes */
-  .theme-purple {
-    --theme-primary: 265 89% 78%;
-    --theme-secondary: 267 83% 60%;
-    --theme-accent: 263 70% 50.4%;
-    --theme-muted: 250 95% 76%;
-    --gradient-start: 265 89% 78%;
-    --gradient-end: 267 83% 60%;
-  }
-
-  .theme-blue {
-    --theme-primary: 217 91% 60%;
-    --theme-secondary: 224 76% 48%;
-    --theme-accent: 213 94% 68%;
-    --theme-muted: 199 89% 48%;
-    --gradient-start: 217 91% 60%;
-    --gradient-end: 224 76% 48%;
-  }
-
-  .theme-emerald {
-    --theme-primary: 152 60% 52%;
-    --theme-secondary: 142 71% 45%;
-    --theme-accent: 160 84% 39%;
-    --theme-muted: 168 75% 60%;
-    --gradient-start: 152 60% 52%;
-    --gradient-end: 142 71% 45%;
-  }
-
-  .theme-amber {
-    --theme-primary: 43 96% 56%;
-    --theme-secondary: 32 95% 44%;
-    --theme-accent: 36 100% 50%;
-    --theme-muted: 48 96% 53%;
-    --gradient-start: 43 96% 56%;
-    --gradient-end: 32 95% 44%;
-  }
-
-  .theme-rose {
-    --theme-primary: 336 80% 58%;
-    --theme-secondary: 349 89% 60%;
-    --theme-accent: 339 90% 51%;
-    --theme-muted: 330 81% 60%;
-    --gradient-start: 336 80% 58%;
-    --gradient-end: 349 89% 60%;
   }
 }
 
@@ -545,3 +560,11 @@
   }
 }
 
+/* Make sure all elements that use theme colors have proper transitions */
+@layer utilities {
+  .text-gradient,
+  .bg-gradient,
+  [class*="theme-"] * {
+    transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  }
+}   

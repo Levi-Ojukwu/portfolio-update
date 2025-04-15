@@ -1,81 +1,243 @@
-"use client"
+/** @format */
 
-import React, { createContext, useContext, useState, useEffect } from "react"
+"use client";
 
-// Define all available color themes
-export type ColorTheme =
-  | "theme-amber"
-  | "theme-rose"
-  | "theme-emerald"
-  | "theme-blue"
-  | "theme-purple";
+import type React from "react";
+import {
+	createContext,
+	useState,
+	useEffect,
+	useContext,
+	type ReactNode,
+} from "react";
 
-interface ColorThemeContextType {
-  colorTheme: ColorTheme
-  setColorTheme: (theme: ColorTheme) => void
-}
+// Define the color themes
+type ColorTheme =
+	| "theme-purple"
+	| "theme-blue"
+	| "theme-emerald"
+	| "theme-amber"
+	| "theme-rose";
 
-const ColorThemeContext = createContext<ColorThemeContextType | undefined>(undefined)
+// Define the context type
+type ColorThemeContextType = {
+	colorTheme: ColorTheme;
+	setColorTheme: (theme: ColorTheme) => void;
+};
 
-interface ColorThemeProviderProps {
-  children: React.ReactNode
-}
+// Create the context with a default value
+const ColorThemeContext = createContext<ColorThemeContextType>({
+	colorTheme: "theme-purple", // Default theme
+	setColorTheme: () => console.warn("setColorTheme is not defined"),
+});
 
-export function ColorThemeProvider({ children }: ColorThemeProviderProps) {
-  // Initialize with a default theme, but will check localStorage first
-  const [colorTheme, setColorTheme] = useState<ColorTheme>("theme-purple")
-  const [mounted, setMounted] = useState(false)
+// Create a provider component
+type ColorThemeProviderProps = {
+	children: ReactNode;
+};
 
-  // Only run on client-side to avoid hydration mismatch
-  useEffect(() => {
-    setMounted(true)
-    // Load saved theme from localStorage if available
-    const savedTheme = localStorage.getItem("color-theme") as ColorTheme
-    if (savedTheme && isValidTheme(savedTheme)) {
-      setColorTheme(savedTheme)
-    }
-  }, [])
+const ColorThemeProvider: React.FC<ColorThemeProviderProps> = ({
+	children }) => {
+	// State to hold the current color theme
+	const [colorTheme, setColorTheme] = useState<ColorTheme>("theme-purple");
 
-  // Apply theme whenever it changes
-  useEffect(() => {
-    if (!mounted) return
+	// Function to apply theme to document
+	const applyThemeToDocument = (theme: ColorTheme) => {
+		// Remove all theme classes
+		document.documentElement.classList.remove(
+			"theme-purple",
+			"theme-blue",
+			"theme-emerald",
+			"theme-amber",
+			"theme-rose",
+		);
 
-    // Save theme to localStorage
-    localStorage.setItem("color-theme", colorTheme)
+		// Add the new theme class
+		document.documentElement.classList.add(theme);
 
-    // Remove all theme classes
-    document.documentElement.classList.remove(
-      "theme-purple",
-      "theme-blue",
-      "theme-emerald",
-      "theme-amber",
-      "theme-rose",
-    )
+		// Also set the data attribute for CSS variables
+		document.documentElement.setAttribute("data-color-theme", theme);
 
-    // Add current theme class
-    document.documentElement.classList.add(`theme-${colorTheme}`)
+		// Debug log to verify theme changes
+		console.log(`Color theme changed to: ${theme}`);
+	};
 
-    // Debug log to verify theme changes
-    console.log(`Color theme changed to: theme-${colorTheme}`)
+	// Apply theme on initial load and when theme changes
+	useEffect(() => {
+		applyThemeToDocument(colorTheme);
+	}, [colorTheme]);
 
-  }, [colorTheme, mounted])
+	// Provide the context value
+	return (
+		<ColorThemeContext.Provider value={{ colorTheme, setColorTheme }}>
+			{children}
+		</ColorThemeContext.Provider>
+	);
+};
 
-  // Helper function to validate theme
-  function isValidTheme(theme: string): theme is ColorTheme {
-    return ["purple", "blue", "emerald", "amber", "rose"].includes(theme)
-  }
+// Custom hook to use the color theme context
+const useColorTheme = () => {
+	const context = useContext(ColorThemeContext);
+	if (!context) {
+		throw new Error("useColorTheme must be used within a ColorThemeProvider");
+	}
+	return context;
+};
 
-  // Provide a value that won't change unless colorTheme changes
-  const contextValue = React.useMemo(() => ({ colorTheme, setColorTheme }), [colorTheme])
+// Theme selector component
+type ThemeSelectorProps = {
+	themes: { label: string; value: string }[];
+};
 
-  return <ColorThemeContext.Provider value={contextValue}>{children}</ColorThemeContext.Provider>
-}
+const ThemeSelector: React.FC<ThemeSelectorProps> = ({ themes }) => {
+	const { setColorTheme } = useColorTheme();
 
-export function useColorTheme(): ColorThemeContextType {
-  const context = useContext(ColorThemeContext)
-  if (context === undefined) {
-    throw new Error("useColorTheme must be used within a ColorThemeProvider")
-  }
-  return context
-}
+	return (
+		<div>
+			{themes.map((theme) => (
+				<button
+					key={theme.value}
+					onClick={() => {
+						console.log(`Clicked on theme: ${theme.value}`);
+						setColorTheme(theme.value as ColorTheme);
+					}}>
+					{theme.label}
+				</button>
+			))}
+		</div>
+	);
+};
 
+export { ColorThemeProvider, useColorTheme, ThemeSelector };
+export type { ColorTheme };
+
+// /** @format */
+
+// "use client";
+
+// import React, {
+// 	createContext,
+// 	useState,
+// 	useContext,
+// 	useEffect,
+// 	type ReactNode,
+// } from "react";
+
+// // Define all available color themes
+// type ColorTheme =
+// 	| "theme-purple"
+// 	| "theme-blue"
+// 	| "theme-emerald"
+// 	| "theme-amber"
+// 	| "theme-rose";
+
+// type ColorThemeContextType = {
+// 	colorTheme: ColorTheme;
+// 	setColorTheme: (theme: ColorTheme) => void;
+// }
+
+// // Create the context with a default value
+// const ColorThemeContext = createContext<ColorThemeContextType>({
+//   colorTheme: "theme-purple", // Default theme
+//   setColorTheme: () => console.warn("setColorTheme is not defined"),
+// })
+
+// // Create a provider component
+// type ColorThemeProviderProps = {
+//   children: ReactNode
+// }
+
+// export function ColorThemeProvider({ children }: ColorThemeProviderProps) {
+// 	// Initialize with the default theme
+// 	const [colorTheme, setColorThemeState] =
+// 		useState<ColorTheme>(DEFAULT_COLOR_THEME);
+// 	const [mounted, setMounted] = useState(false);
+
+// 	// Function to set the color theme
+// 	const setColorTheme = (newTheme: ColorTheme) => {
+// 		if (typeof window !== "undefined") {
+// 			// Save to localStorage
+// 			localStorage.setItem("color-theme", newTheme);
+// 		}
+
+// 		// Update state
+// 		setColorThemeState(newTheme);
+
+// 		// Apply theme to document
+// 		applyThemeToDocument(newTheme);
+// 	};
+
+// 	// Function to apply theme to document
+// 	const applyThemeToDocument = (theme: ColorTheme) => {
+// 		// Remove all theme classes
+// 		document.documentElement.classList.remove(
+// 			"theme-purple",
+// 			"theme-blue",
+// 			"theme-emerald",
+// 			"theme-amber",
+// 			"theme-rose",
+// 		);
+
+// 		// Add the new theme class
+// 		document.documentElement.classList.add(theme);
+
+// 		// Also set the data attribute for CSS variables
+// 		document.documentElement.setAttribute("data-color-theme", theme);
+
+// 		// Debug log to verify theme changes
+// 		console.log(`Color theme changed to: ${theme}`);
+// 	};
+
+// 	// Effect to initialize theme on mount
+// 	useEffect(() => {
+// 		setMounted(true);
+
+// 		// Only run on client-side
+// 		if (typeof window !== "undefined") {
+// 			// Try to get saved theme from localStorage
+// 			const savedTheme = localStorage.getItem(
+// 				"color-theme",
+// 			) as ColorTheme | null;
+
+// 			if (savedTheme && isValidTheme(savedTheme)) {
+// 				setColorThemeState(savedTheme);
+// 				applyThemeToDocument(savedTheme);
+// 			} else {
+// 				// If no valid saved theme, set default
+// 				localStorage.setItem("color-theme", DEFAULT_COLOR_THEME);
+// 				applyThemeToDocument(DEFAULT_COLOR_THEME);
+// 			}
+// 		}
+// 	}, []);
+
+// 	// Helper function to validate theme
+// 	function isValidTheme(theme: string): theme is ColorTheme {
+// 		return [
+// 			"theme-purple",
+// 			"theme-blue",
+// 			"theme-emerald",
+// 			"theme-amber",
+// 			"theme-rose",
+// 		].includes(theme);
+// 	}
+
+// 	// Provide a value that won't change unless colorTheme changes
+// 	const contextValue = React.useMemo(
+// 		() => ({ colorTheme, setColorTheme }),
+// 		[colorTheme],
+// 	);
+
+// 	return (
+// 		<ColorThemeContext.Provider value={contextValue}>
+// 			{children}
+// 		</ColorThemeContext.Provider>
+// 	);
+// }
+
+// export function useColorTheme(): ColorThemeContextType {
+// 	const context = useContext(ColorThemeContext);
+// 	if (context === undefined) {
+// 		throw new Error("useColorTheme must be used within a ColorThemeProvider");
+// 	}
+// 	return context;
+// }

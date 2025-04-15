@@ -27,7 +27,7 @@ const AboutPreview: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="mb-12 text-center"
+          className="mb-20 text-center"
         >
           <h2 className="text-3xl md:text-4xl font-bold font-heading mb-4">
             About <span className="text-gradient">Me</span>
