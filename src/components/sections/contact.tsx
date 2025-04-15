@@ -148,7 +148,7 @@ const ContactSection: React.FC = () => {
           <h3 className="text-2xl font-semibold text-gradient mb-2 font-heading">Have You Any Questions?</h3>
           <h4 className="text-lg mb-8">I'M AT YOUR SERVICE</h4>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 md:gap-6">
             {contactInfo.map((info, index) => (
               <motion.div
                 key={index}
@@ -157,7 +157,7 @@ const ContactSection: React.FC = () => {
                 transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
                 className="contact-info-item"
               >
-                <div className="contact-icon mb-4">{info.icon}</div>
+                <div className="contact-icon mb-3">{info.icon}</div>
                 <h4 className="text-lg font-semibold mb-1 font-heading">{info.title}</h4>
                 <p className="text-muted-foreground">{info.content}</p>
               </motion.div>

@@ -31,10 +31,13 @@ const AboutSection: React.FC = () => {
 		{ name: "React.js", percentage: 88 },
 		{ name: "TypeScript", percentage: 65 },
 		{ name: "Tailwind CSS", percentage: 97 },
+		{ name: "Laravel (PHP)", percentage: 80 },
+		{ name: "Medium", percentage: 90 },
+		{ name: "Language", percentage: 95 },
 	];
 
 	const personalInfo: PersonalInfo[] = [
-		{ label: "Email", value: "levdevoj17@gmail.com" },
+		{ label: "Email", value: "ojukwulevichinedu@gmail.com" },
 		{ label: "Phone", value: "+234 704 895 2008" },
 		{ label: "City", value: "Abuja, Nigeria" },
 	];
@@ -46,9 +49,9 @@ const AboutSection: React.FC = () => {
 				"As a Blockchain Engineer, I bring the technical expertise in Cairo, Solidity, and Foundry, creating creative problem-solving skills needed to help achieve your goals in the web3 space. If you are ready to take your blockchain projects to another level, I am here to help.",
 		},
 		{
-			title: "Frontend Development",
+			title: "Full-Stack Web Development",
 			description:
-				"I am a frontend developer who specializes in building user-centric, visually stunning, and high-performing applications that help businesses connect to their audience and achieve their goals. Whether you are launching a startup, building a dApp, or maintaining your digital presence, I'm here to help.",
+				"I’m a full-stack developer with a focus on building scalable, user-friendly web applications. From intuitive front-end interfaces to robust back-end systems, I help businesses launch, grow, and deliver seamless digital experiences.",
 		},
 		{
 			title: "Technical Writing",
@@ -89,13 +92,13 @@ const AboutSection: React.FC = () => {
 					<div className='w-24 h-1 bg-gradient mx-auto rounded-full'></div>
 				</motion.div>
 
-				<div className='grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16'>
+				<div className='grid grid-cols-1 lg:grid-cols-2 gap-12 mb-32 mt-24'>
 					<motion.div
 						initial={{ opacity: 0, x: -30 }}
 						animate={{ opacity: 1, x: 0 }}
 						transition={{ duration: 0.5, delay: 0.2 }}>
 						<h3 className='text-2xl font-semibold mb-4 font-heading'>
-							I am Levi Ojukwu,{" "}
+							My name is Levi Ojukwu,{" "}
 							<span className='text-gradient'>
 								a Web Developer, and A Technical Writer
 							</span>
@@ -128,8 +131,8 @@ const AboutSection: React.FC = () => {
 							asChild
 							className='bg-gradient text-white hover:opacity-90 group'>
 							<a
-								href='/MyCV.pdf'
-								download
+								href='/Levi-Ojukwu.pdf'
+								download='Levi-Ojukwu.pdf'
 								className='flex items-center gap-2'>
 								Download CV
 								<Download className='h-4 w-4 transition-transform group-hover:translate-y-1' />
@@ -159,7 +162,7 @@ const AboutSection: React.FC = () => {
 					</motion.div>
 				</div>
 
-				<div className='grid grid-cols-1 lg:grid-cols-2 gap-12 mt-16'>
+				<div className='grid grid-cols-1 lg:grid-cols-2 gap-12 mt-24 mb-10 '>
 					<motion.div
 						initial={{ opacity: 0, y: 30 }}
 						animate={{ opacity: 1, y: 0 }}

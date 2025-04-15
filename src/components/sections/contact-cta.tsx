@@ -23,7 +23,7 @@ const ContactCTA: React.FC = () => {
             <p className="text-white/80 max-w-2xl mx-auto mb-8 text-lg">
               Have a project in mind? I am currently open to full-time employment and collaborative partnerships. I would welcome the chance to contribute to meaningful initiatives and create impactful solutions together.!
             </p>
-            <Button asChild size="lg" className="bg-white text-[hsl(var(--theme-primary))] hover:bg-white/90 group">
+            <Button asChild size="lg" className="bg-white hover:bg-white/90 text-gray-500 dark:text-gray-800 group">
               <Link to="/contact" className="flex items-center gap-2">
                 Get In Touch
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />

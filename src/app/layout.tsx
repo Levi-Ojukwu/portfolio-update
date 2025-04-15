@@ -3,7 +3,12 @@ import { ThemeProvider } from "../components/theme-provider"
 import { ColorThemeProvider } from "../components/color-theme-provider" 
 import { Poppins, Inter, Space_Grotesk } from "next/font/google"
 import type { Metadata } from "next"
-import "./globals.css"
+import "./index.css"
+
+
+interface RootLayoutProps {
+    children: React.ReactNode
+  }
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -29,15 +34,12 @@ export const metadata: Metadata = {
     "Professional portfolio of Ojukwu Levi Chinedu, a Web3 Full-Stack Developer and Technical Writer specializing in blockchain technology.",
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: RootLayoutProps){
+  
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning data-color-theme="theme-purple" className="dark">
       <body className={`${poppins.variable} ${inter.variable} ${spaceGrotesk.variable} font-sans antialiased`}>
-        <ThemeProvider defaultTheme="dark">
+        <ThemeProvider>
           <ColorThemeProvider>{children}</ColorThemeProvider>
         </ThemeProvider>
       </body>

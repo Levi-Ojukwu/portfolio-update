@@ -6,81 +6,105 @@ import type React from "react";
 import { createContext, useContext, useEffect, useState } from "react";
 
 type Theme = "dark" | "light" | "system";
+type ColorTheme = "theme-amber" | "theme-rose" | "theme-emerald" | "theme-blue" | "theme-purple"
 
 interface ThemeProviderProps {
 	children: React.ReactNode;
-	defaultTheme?: Theme;
-	storageKey?: string;
 }
 
-interface ThemeProviderState {
-	theme: Theme;
-	setTheme: (theme: Theme) => void;
-}
+interface ThemeContextType {
+	theme: Theme
+	colorTheme: ColorTheme
+	setTheme: (theme: Theme) => void
+	setColorTheme: (colorTheme: ColorTheme) => void
+	toggleTheme: () => void
+  }
 
-const ThemeProviderContext = createContext<ThemeProviderState | undefined>(
-	undefined,
-);
+// interface ThemeProviderState {
+// 	theme: Theme;
+// 	setTheme: (theme: Theme) => void;
+// }
 
-export function ThemeProvider({
-	children,
-	defaultTheme = "system",
-	storageKey = "vite-ui-theme",
-	...props
-}: ThemeProviderProps) {
-	const [theme, setTheme] = useState<Theme>(() => {
-    if (typeof window !== "undefined") {
-      const storedTheme = localStorage.getItem(storageKey)
-      return (storedTheme as Theme) || defaultTheme
-    }
-    return defaultTheme
-	});
+// const ThemeProviderContext = createContext<ThemeProviderState | undefined>(
+// 	undefined,
+// );
+
+const ThemeContext = createContext<ThemeContextType | undefined>(undefined)
+
+// Default values
+const DEFAULT_THEME: Theme = "dark"
+const DEFAULT_COLOR_THEME: ColorTheme = "theme-purple"
+
+export function ThemeProvider({children}: ThemeProviderProps) {
+	const [theme, setThemeState] = useState<Theme>(DEFAULT_THEME);
+	const [colorTheme, setColorThemeState] = useState<ColorTheme>(DEFAULT_COLOR_THEME);
+  	const [mounted, setMounted] = useState(false);
+
+	// Set theme in localStorage and update document attributes
+	const setTheme = (newTheme: Theme) => {
+		localStorage.setItem("theme", newTheme)
+		setThemeState(newTheme)
+		document.documentElement.setAttribute("data-theme", newTheme)
+		document.documentElement.classList.toggle("dark", newTheme === "dark")
+	}
+
+	// Set color theme in localStorage and update CSS variables
+	const setColorTheme = (newColorTheme: ColorTheme) => {
+		localStorage.setItem("colorTheme", newColorTheme)
+		setColorThemeState(newColorTheme)
+		document.documentElement.setAttribute("data-color-theme", newColorTheme)
+	}
+
+	// Toggle between light and dark themes
+	const toggleTheme = () => {
+		setTheme(theme === "light" ? "dark" : "light")
+	}
 
 
 	useEffect(() => {
-		const root = window.document.documentElement;
+		// Apply default theme immediately to prevent flash of unstyled content
+		document.documentElement.setAttribute("data-color-theme", DEFAULT_COLOR_THEME)
+		document.documentElement.classList.add("dark")
+		document.documentElement.setAttribute("data-theme", DEFAULT_THEME)
 
-		root.classList.remove("light", "dark");
-
-		if (theme === "system") {
-			const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
-				.matches
-				? "dark"
-				: "light";
-
-			root.classList.add(systemTheme);
-			return;
-		}
-
-		root.classList.add(theme);
-
-		 // Debug log to verify theme changes
-		 console.log(`Light/dark theme changed to: ${theme}`);
-
-	}, [theme]);
-
-	const value: ThemeProviderState = {
-		theme,
-		setTheme: (theme: Theme) => {
-			localStorage.setItem(storageKey, theme);
-			setTheme(theme);
-		},
-	};
+		// Check if we're in the browser environment
+		if (typeof window !== "undefined") {
+			// Get stored theme or use default
+			const storedTheme = localStorage.getItem("theme") as Theme | null
+			const storedColorTheme = localStorage.getItem("colorTheme") as ColorTheme | null
+	  
+			// Apply stored theme or default
+			if (!storedTheme) {
+			  localStorage.setItem("theme", DEFAULT_THEME)
+			} else {
+			  setThemeState(storedTheme)
+			  document.documentElement.setAttribute("data-theme", storedTheme)
+			  document.documentElement.classList.toggle("dark", storedTheme === "dark")
+			}
+	  
+			// Apply stored color theme or default
+			if (!storedColorTheme) {
+			  localStorage.setItem("colorTheme", DEFAULT_COLOR_THEME)
+			} else {
+			  setColorThemeState(storedColorTheme)
+			  document.documentElement.setAttribute("data-color-theme", storedColorTheme)
+			}
+	  
+			setMounted(true)
+		  }
+	}, []);
 
 	return (
-		<ThemeProviderContext.Provider
-			{...props}
-			value={value}>
-			{children}
-		</ThemeProviderContext.Provider>
-	);
+		<ThemeContext.Provider value={{ theme, colorTheme, setTheme, setColorTheme, toggleTheme }}>
+		  {children}
+		</ThemeContext.Provider>
+	  )
 }
 
-export const useTheme = (): ThemeProviderState => {
-	const context = useContext(ThemeProviderContext);
-
-	if (context === undefined)
-		throw new Error("useTheme must be used within a ThemeProvider");
-
-	return context;
-};
+export function useTheme() {
+	const context = useContext(ThemeContext)
+	if (context === undefined) {
+	  throw new Error("useTheme must be used within a ThemeProvider")
+	}
+	return context
+}

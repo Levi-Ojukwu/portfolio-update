@@ -50,7 +50,7 @@ const PortfolioSection: React.FC = () => {
       title: "Coin Mining Farm",
       image: "src/Images/Coinmining.png",
       description: "A pioneering platform dedicated to empowering individuals and organizations to capitalize on the transformative potential of cryptocurrency mining and investments.",
-      link: "https://omnifood-chinedu-levi.netlify.app/",
+      link: "https://elitefarmmine.com/",
       github: "https://github.com/Levi-Ojukwu/Coin-Mining-Stock",
       technologies: ["React.js", "Typescript", "Laravel", "Tailwind CSS"],
       category: "fullstack",
