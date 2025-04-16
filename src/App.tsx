@@ -17,17 +17,6 @@ import "./output.css";
 
 const App: React.FC = () => {
 	const { colorTheme } = useColorTheme();
-	// const [showWelcome, setShowWelcome] = useState(true);
-
-	// // Check if this is the first visit
-	// useEffect(() => {
-	// 	const hasVisited = sessionStorage.getItem("hasVisited");
-	// 	if (hasVisited) {
-	// 		setShowWelcome(false);
-	// 	} else {
-	// 		sessionStorage.setItem("hasVisited", "true");
-	// 	}
-	// }, []);
 
 	// Ensure theme is applied on initial load
 	useEffect(() => {

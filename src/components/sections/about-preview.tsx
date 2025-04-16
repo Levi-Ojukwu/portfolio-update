@@ -84,7 +84,7 @@ const AboutPreview: React.FC = () => {
             <div className="animated-gradient-border">
               <div className="relative aspect-square max-w-xs mx-auto overflow-hidden my-16 rounded-xl">
                 <div className="absolute inset-0 bg-gradient opacity-10"></div>
-                <img src="src/Images/Profile.jpg" alt="About Me" className="  object-cover" />
+                <img src="Images/Profile.jpg" alt="About Me" className="  object-cover" />
               </div>
             </div>
 

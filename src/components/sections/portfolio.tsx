@@ -21,7 +21,7 @@ const PortfolioSection: React.FC = () => {
   const projects: Project[] = [
     {
       title: "Token Stream dApp",
-      image: "src/Images/Triver.png",
+      image: "Images/Triver.png",
       description: "A decentralized application for  empowering individuals and businesses to automate financial processes seamlessly.",
       link: "https://triver.vercel.app/",
       github: "https://github.com/TokenStream",
@@ -30,7 +30,7 @@ const PortfolioSection: React.FC = () => {
     },
     {
       title: "Super Corp",
-      image: "src/Images/supercope.png",
+      image: "Images/supercope.png",
       description: "Admin dashboard website with modern design and chart analytics.",
       link: "https://flourishing-ojukwu-levi-supercorp.netlify.app/",
       github: "https://github.com/Levi-Ojukwu/Super_corp",
@@ -39,7 +39,7 @@ const PortfolioSection: React.FC = () => {
     },
     {
       title: "7 Seer",
-      image: "src/Images/Revalysed.png",
+      image: "Images/Revalysed.png",
       description: "Landing page for a prediction platform with interactive elements.",
       link: "https://ephemeral-ojukwulevi-7seer-landing-pa.netlify.app/",
       github: "https://github.com/Levi-Ojukwu/7Seer-clone",
@@ -48,7 +48,7 @@ const PortfolioSection: React.FC = () => {
     },
     {
       title: "Coin Mining Farm",
-      image: "src/Images/Coinmining.png",
+      image: "Images/Coinmining.png",
       description: "A pioneering platform dedicated to empowering individuals and organizations to capitalize on the transformative potential of cryptocurrency mining and investments.",
       link: "https://elitefarmmine.com/",
       github: "https://github.com/Levi-Ojukwu/Coin-Mining-Stock",
@@ -57,7 +57,7 @@ const PortfolioSection: React.FC = () => {
     },
     {
       title: "Prime Properties",
-      image: "src/Images/Prime.png",
+      image: "Images/Prime.png",
       description: "Real estate listing platform with property search functionality.",
       link: "https://ojukwu-prime-properties.netlify.app/",
       github: "https://github.com/Levi-Ojukwu/New-Prime",
@@ -66,7 +66,7 @@ const PortfolioSection: React.FC = () => {
     },
     {
       title: "Prosure",
-      image: "src/Images/Prosure.png",
+      image: "Images/Prosure.png",
       description: "A decentralized insurance platform developed with user protection in mind to ensure that users are covered/compensated in the event of DeFi hacks.",
       link: "https://prosure-frontend.vercel.app/",
       github: "https://github.com/orgs/ALMON-CHAINCRAFTS/repositories",
@@ -75,7 +75,7 @@ const PortfolioSection: React.FC = () => {
     },
     {
       title: "Getting Started With StarkNet",
-      image: "src/Images/GettingStarted.png",
+      image: "Images/GettingStarted.png",
       description: "This article will explain StarkNet's fundamentals, highlight its key features, and explain how to get started as a developer",
       link: "https://medium.com/@ojukwulevichinedu/getting-started-with-starknet-unlocking-new-possibilities-d5590b0f9f9d",
       github: "#",
@@ -84,7 +84,7 @@ const PortfolioSection: React.FC = () => {
     },
     {
       title: "StarkNet Smart Wallet",
-      image: "src/Images/SmartWallet.png",
+      image: "Images/SmartWallet.png",
       description: "This article explains why you need to use smart wallets, and how to set up and make use of popular Starknet wallets like Braavos or Argent X",
       link: "https://medium.com/@ojukwulevichinedu/starknet-smart-wallets-a-comprehensive-guide-to-starknet-smart-wallets-and-setup-7fcfdc2e6da3",
       github: "#",

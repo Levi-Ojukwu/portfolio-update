@@ -18,21 +18,21 @@ const PortfolioPreview: React.FC = () => {
   const projects: Project[] = [
     {
       title: "Triver Token Stream dApp",
-      image: "src/Images/Triver.png",
+      image: "Images/Triver.png",
       description: "A decentralized application for streaming tokens between wallets.",
       link: "https://triver.vercel.app/",
       technologies: ["React", "Solidity", "Ethers.js"],
     },
     {
       title: "Super Corp",
-      image: "src/Images/supercope.png",
+      image: "Images/supercope.png",
       description: "Admin dashboard website with modern design and chart analytics.",
       link: "https://flourishing-ojukwu-levi-supercorp.netlify.app/",
       technologies: ["Tailwind CSS", "React.js"],
     },
     {
       title: "7 Seer",
-      image: "src/Images/Revalysed.png",
+      image: "Images/Revalysed.png",
       description: "Landing page for a prediction platform with interactive elements.",
       link: "https://ephemeral-ojukwulevi-7seer-landing-pa.netlify.app/",
       technologies: ["React.js", "Tailwind CSS", "TypeScript"],
