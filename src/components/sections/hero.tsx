@@ -123,8 +123,8 @@ const HeroSection: React.FC = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.7 }}
           >
-            <div className="animated-gradient-border h-[79%]">
-              <div className="relative w-full aspect-[4/5] max-w-md mx-auto overflow-hidden ">
+            <div className="animated-gradient-border h-[84.9%]">
+              <div className="relative w-full aspect-[4/5] max-w-md mx-auto overflow-hidden">
                 <img src="src/Images/HeroImg.png" alt="Ojukwu Levi Chinedu" className="animate-pulse" />
               </div>
             </div>
