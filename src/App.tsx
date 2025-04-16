@@ -1,7 +1,7 @@
 /** @format */
 
 import type React from "react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import MainLayout from "./components/layouts/main-layout";
 import HomePage from "./pages/home";
@@ -9,12 +9,25 @@ import AboutPage from "./pages/about";
 import ServicesPage from "./pages/services";
 import PortfolioPage from "./pages/portfolio";
 import ContactPage from "./pages/contact";
+import WelcomePage from "./pages/welcome";
+import WelcomeGuard from "./components/welcome-guard";
 import { useColorTheme } from "./components/color-theme-provider";
 import "./index.css";
 import "./output.css";
 
 const App: React.FC = () => {
 	const { colorTheme } = useColorTheme();
+	// const [showWelcome, setShowWelcome] = useState(true);
+
+	// // Check if this is the first visit
+	// useEffect(() => {
+	// 	const hasVisited = sessionStorage.getItem("hasVisited");
+	// 	if (hasVisited) {
+	// 		setShowWelcome(false);
+	// 	} else {
+	// 		sessionStorage.setItem("hasVisited", "true");
+	// 	}
+	// }, []);
 
 	// Ensure theme is applied on initial load
 	useEffect(() => {
@@ -31,31 +44,88 @@ const App: React.FC = () => {
 		document.documentElement.classList.add(`theme-${colorTheme}`);
 	}, [colorTheme]);
 
+	// Otherwise show the main app
 	return (
-		<MainLayout>
+		// <MainLayout>
+		// 	<Routes>
+		// 		<Route
+		// 			path='/'
+		// 			element={<HomePage />}
+		// 		/>
+		// 		<Route
+		// 			path='/about'
+		// 			element={<AboutPage />}
+		// 		/>
+		// 		<Route
+		// 			path='/services'
+		// 			element={<ServicesPage />}
+		// 		/>
+		// 		<Route
+		// 			path='/portfolio'
+		// 			element={<PortfolioPage />}
+		// 		/>
+		// 		<Route
+		// 			path='/contact'
+		// 			element={<ContactPage />}
+		// 		/>
+		// 		<Route
+		// 			path='/welcome'
+		// 			element={<WelcomePage />}
+		// 		/>
+		// 	</Routes>
+		// </MainLayout>
+
+		<WelcomeGuard>
 			<Routes>
+				{/* Welcome page route - rendered without MainLayout */}
+				<Route
+					path='/welcome'
+					element={<WelcomePage />}
+				/>
+
+				{/* All other routes - rendered with MainLayout */}
 				<Route
 					path='/'
-					element={<HomePage />}
+					element={
+						<MainLayout>
+							<HomePage />
+						</MainLayout>
+					}
 				/>
 				<Route
 					path='/about'
-					element={<AboutPage />}
+					element={
+						<MainLayout>
+							<AboutPage />
+						</MainLayout>
+					}
 				/>
 				<Route
 					path='/services'
-					element={<ServicesPage />}
+					element={
+						<MainLayout>
+							<ServicesPage />
+						</MainLayout>
+					}
 				/>
 				<Route
 					path='/portfolio'
-					element={<PortfolioPage />}
+					element={
+						<MainLayout>
+							<PortfolioPage />
+						</MainLayout>
+					}
 				/>
 				<Route
 					path='/contact'
-					element={<ContactPage />}
+					element={
+						<MainLayout>
+							<ContactPage />
+						</MainLayout>
+					}
 				/>
 			</Routes>
-		</MainLayout>
+		</WelcomeGuard>
 	);
 };
 
