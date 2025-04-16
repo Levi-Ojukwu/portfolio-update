@@ -3413,6 +3413,10 @@ h1,
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
+  .lg\:grid-cols-4{
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
   .lg\:rounded-xl{
     border-radius: 0.75rem;
   }

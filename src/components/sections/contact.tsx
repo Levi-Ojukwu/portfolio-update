@@ -6,7 +6,7 @@ import { motion } from "framer-motion"
 import { Button } from "../ui/button"
 import { Input } from "../ui/input"
 import { Textarea } from "../ui/textarea"
-import { Phone, MapPin, Mail, Send } from "lucide-react"
+import { Phone, MapPin, Mail, Send, Globe } from "lucide-react"
 import { ToastContainer, toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 import emailjs from '@emailjs/browser';
@@ -113,8 +113,13 @@ const ContactSection: React.FC = () => {
     {
       icon: <Mail className="h-6 w-6" />,
       title: "Email",
-      content: "levdevoj17@gmail.com",
+      content: "ojukwulevichinedu@gmail.com",
     },
+    // {
+    //   icon: <Globe className="h-6 w-6" />,
+    //   title: "Socials",
+    //   content: "{<Globe />}"
+    // },
   ]
 
   return (
@@ -135,7 +140,7 @@ const ContactSection: React.FC = () => {
           </h1>
           <div className="w-24 h-1 bg-gradient mx-auto rounded-full"></div>
           <p className="text-muted-foreground max-w-2xl mx-auto mt-6">
-            Have a question or want to work together? Feel free to get in touch with me.
+          Have a project in mind or want to discuss a potential collaboration? I'd love to hear from you!
           </p>
         </motion.div>
 
