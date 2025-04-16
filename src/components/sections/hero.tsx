@@ -131,7 +131,7 @@ const HeroSection: React.FC = () => {
 
             {/* Floating elements */}
             <motion.div
-              className="absolute -top-6 -left-6 p-4 rounded-lg glass-card"
+              className="absolute -top-6 -left-6 p-4 border border-gray-100 rounded-lg glass-card"
               animate={{
                 y: [0, -10, 0],
                 rotate: [0, 5, 0],
@@ -151,7 +151,7 @@ const HeroSection: React.FC = () => {
            
 
             <motion.div
-              className="absolute left-40 bottom-40  p-4 rounded-lg glass-card"
+              className="absolute left-40 bottom-40  p-4 border border-gray-100 rounded-lg glass-card"
               animate={{
                 y: [0, 10, 0],
                 rotate: [0, -5, 0],
@@ -170,7 +170,7 @@ const HeroSection: React.FC = () => {
             </motion.div>
 
             <motion.div
-              className="absolute top-12 right-10 p-4 rounded-lg glass-card"
+              className="absolute top-12 right-10 p-4 border border-gray-100 rounded-lg glass-card"
               animate={{
                 y: [0, 10, 0],
                 rotate: [0, -5, 0],
@@ -189,7 +189,7 @@ const HeroSection: React.FC = () => {
             </motion.div>
 
             <motion.div
-              className="absolute bottom-72 -left-28 p-4 rounded-lg glass-card"
+              className="absolute bottom-72 -left-28 p-4 border border-gray-100 rounded-lg glass-card"
               animate={{
                 y: [0, 10, 0],
                 rotate: [0, -5, 0],

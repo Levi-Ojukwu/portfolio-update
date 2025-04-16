@@ -7,20 +7,16 @@ import { Poppins, Inter, Space_Grotesk } from "next/font/google";
 import type { Metadata } from "next";
 import "./index.css";
 
-interface RootLayoutProps {
-	children: React.ReactNode;
-}
+const inter = Inter({
+	subsets: ["latin"],
+	weight: ["300", "400", "500", "600", "700"],
+	variable: "--font-inter",
+});
 
 const poppins = Poppins({
 	subsets: ["latin"],
 	weight: ["300", "400", "500", "600", "700"],
 	variable: "--font-poppins",
-});
-
-const inter = Inter({
-	subsets: ["latin"],
-	weight: ["300", "400", "500", "600", "700"],
-	variable: "--font-inter",
 });
 
 const spaceGrotesk = Space_Grotesk({
@@ -35,14 +31,21 @@ export const metadata: Metadata = {
 		"Professional portfolio of Ojukwu Levi Chinedu, a Web3 Full-Stack Developer and Technical Writer specializing in blockchain technology.",
 };
 
-export default function RootLayout({ children }: RootLayoutProps) {
+interface RootLayoutProps {
+	children: React.ReactNode;
+}
+
+export default function RootLayout({
+	children,
+}: Readonly<{
+	children: React.ReactNode;
+}>) {
 	return (
 		<html
 			lang='en'
 			suppressHydrationWarning
-			className='theme-purple'
-			data-color-theme='theme-purple'
-			data-theme='dark'>
+			data-theme="dark"
+			>
 			<body
 				className={`${poppins.variable} ${inter.variable} ${spaceGrotesk.variable} font-sans antialiased`}>
 				<ThemeProvider>

@@ -39,37 +39,96 @@ type ColorThemeProviderProps = {
 const ColorThemeProvider: React.FC<ColorThemeProviderProps> = ({
 	children }) => {
 	// State to hold the current color theme
-	const [colorTheme, setColorTheme] = useState<ColorTheme>("theme-purple");
+	const [colorThemeState, setColorThemeState] = useState<ColorTheme>("theme-purple");
 
 	// Function to apply theme to document
-	const applyThemeToDocument = (theme: ColorTheme) => {
-		// Remove all theme classes
-		document.documentElement.classList.remove(
-			"theme-purple",
-			"theme-blue",
-			"theme-emerald",
-			"theme-amber",
-			"theme-rose",
-		);
+	// const applyThemeToDocument = (theme: ColorTheme) => {
+	// 	// Remove all theme classes
+	// 	document.documentElement.classList.remove(
+	// 		"theme-purple",
+	// 		"theme-blue",
+	// 		"theme-emerald",
+	// 		"theme-amber",
+	// 		"theme-rose",
+	// 	);
 
-		// Add the new theme class
-		document.documentElement.classList.add(theme);
+	// 	// Add the new theme class
+	// 	document.documentElement.classList.add(theme);
 
-		// Also set the data attribute for CSS variables
-		document.documentElement.setAttribute("data-color-theme", theme);
+	// 	// Also set the data attribute for CSS variables
+	// 	document.documentElement.setAttribute("data-color-theme", theme);
 
-		// Debug log to verify theme changes
-		console.log(`Color theme changed to: ${theme}`);
-	};
+	// 	// Debug log to verify theme changes
+	// 	console.log(`Color theme changed to: ${theme}`);
+	// };
+
+  // Function to apply theme to document
+  const setColorTheme = (newTheme: ColorTheme) => {
+    // First, update localStorage
+    if (typeof window !== "undefined") {
+      localStorage.setItem("color-theme", newTheme)
+    }
+
+    // Update state
+    setColorThemeState(newTheme)
+
+    // Apply theme to document - IMPORTANT: This needs to happen immediately
+    // Remove all theme classes first
+    document.documentElement.classList.remove(
+      "theme-purple",
+      "theme-blue",
+      "theme-emerald",
+      "theme-amber",
+      "theme-rose",
+    )
+
+    // Add the new theme class
+    document.documentElement.classList.add(newTheme)
+
+    // Also set the data attribute for CSS variables
+    document.documentElement.setAttribute("data-color-theme", newTheme)
+
+    console.log(`Color theme changed to: ${newTheme}`)
+  }
 
 	// Apply theme on initial load and when theme changes
-	useEffect(() => {
-		applyThemeToDocument(colorTheme);
-	}, [colorTheme]);
+  useEffect(() => {
+    // On mount, check localStorage
+    if (typeof window !== "undefined") {
+      const storedTheme = localStorage.getItem("color-theme") as ColorTheme | null
+      if (storedTheme) {
+        setColorThemeState(storedTheme)
+      }
+    }
+  }, [])
+
+  useEffect(() => {
+    applyThemeToDocument(colorThemeState)
+  }, [colorThemeState])
+
+  const applyThemeToDocument = (theme: ColorTheme) => {
+    // Remove all theme classes
+    document.documentElement.classList.remove(
+      "theme-purple",
+      "theme-blue",
+      "theme-emerald",
+      "theme-amber",
+      "theme-rose",
+    )
+
+    // Add the new theme class
+    document.documentElement.classList.add(theme)
+
+    // Also set the data attribute for CSS variables
+    document.documentElement.setAttribute("data-color-theme", theme)
+
+    // Debug log to verify theme changes
+    console.log(`Color theme changed to: ${theme}`)
+  }
 
 	// Provide the context value
 	return (
-		<ColorThemeContext.Provider value={{ colorTheme, setColorTheme }}>
+		<ColorThemeContext.Provider value={{ colorTheme: colorThemeState, setColorTheme }}>
 			{children}
 		</ColorThemeContext.Provider>
 	);

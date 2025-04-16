@@ -76,7 +76,9 @@ const ColorThemeButton: React.FC = () => {
 								onClick={() => setColorTheme(theme.value as any)}>
 								<div
 									className='w-4 h-4 rounded-full mr-2'
-									style={{ backgroundColor: theme.color }}></div>
+									style={{ backgroundColor: theme.color }}>
+
+								</div>
 								{/* <span>{theme.name}</span> */}
 								{colorTheme === theme.value && (
 									<span className='ml-auto'>✓</span>

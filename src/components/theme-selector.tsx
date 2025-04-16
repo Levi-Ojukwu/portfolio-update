@@ -9,8 +9,8 @@
   export function ThemeSelector() {
     const { colorTheme, setColorTheme } = useColorTheme()
 
-    // Type the theme option correctly 
-    const themes: { name: string; value: ColorTheme; color: string }[]  = [
+    // Define theme colors
+    const themes = [
       { name: "Purple", value: "theme-purple", color: "#9c36b5" },
       { name: "Blue", value: "theme-blue", color: "#1098ad" },
       { name: "Emerald", value: "theme-emerald", color: "#009473" },
@@ -35,7 +35,10 @@
           {themes.map((theme) => (
             <DropdownMenuItem
               key={theme.value}
-              onClick={() => setColorTheme(theme.value)}
+              onClick={() => {
+                console.log(`Clicked on theme: ${theme.value}`)
+                setColorTheme(theme.value as any)
+              }}
               className="flex items-center gap-2 cursor-pointer"
             >
               <div className="w-4 h-4 rounded-full" style={{ backgroundColor: theme.color }}></div>
