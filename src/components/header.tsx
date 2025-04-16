@@ -53,7 +53,7 @@ const Header: React.FC = () => {
             
           </nav>
 
-          <Button asChild className="ml-4 bg-gradient hover:opacity-90 text-white">
+          <Button asChild className="ml-4 hidden md:block bg-gradient hover:opacity-90 text-white">
               <Link to="/contact">Hire Me</Link>
             </Button>
 

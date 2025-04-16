@@ -99,7 +99,7 @@ export default function WelcomePage() {
               {/* Typing animation */}
               <h1 className="mb-6 text-xl sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-white font-heading">
                 <TypeAnimation
-                  sequence={["Welcome to my TECH world", 1000]}
+                  sequence={["Welcome To My World Of TECHNOLOGY </>", 1000]}
                   speed={50}
                   repeat={0}
                   cursor={true}
